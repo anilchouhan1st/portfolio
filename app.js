@@ -3,6 +3,7 @@ const mysql = require("mysql2");
 const dotenv = require("dotenv");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const hbs = require("hbs");
 
 
 dotenv.config({path:'./.env'});
@@ -11,6 +12,10 @@ const app=express();
 app.use(cookieParser());
 
 console.log("JWT_SECRET =", process.env.JWT_SECRET);
+
+hbs.registerPartials(
+    path.join(__dirname, "views", "partials")
+);
 
 const db = mysql.createConnection({
     host:process.env.DATABASE_HOST,
@@ -22,14 +27,19 @@ const db = mysql.createConnection({
 const publicDirectory = path.join(__dirname,"./public");
 app.use(express.static(publicDirectory));
 
-// Parse URL-encoded bodies (as send by html forms)
-//It reads data sent from HTML forms.
+
 app.use(express.urlencoded( {extended:false}));
-// parse JSON bodies (as send by API clients)
-//It reads JSON data sent by APIs or frontend apps.
+
 app.use(express.json());
 
 app.set('view engine','hbs');
+app.disable('view cache');
+app.set('view cache', false);
+
+app.set("views", path.join(__dirname, "views"));
+hbs.registerPartials(
+    path.join(__dirname, "views", "partials")
+);
 
 db.connect((error)=>{
     if(error){

@@ -6,46 +6,46 @@
     box-sizing: border-box;
     font-family: "Poppins", serif;
 }
-
-nav{
+body {
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    padding: 50px;
-    color: red;
-    background-color: antiquewhite;
-    margin-bottom: 10px;
+    flex-direction: column;
+    background: linear-gradient(to right,#e2e2e2, #c9d6ff);
 }
-nav ul{
-    display: flex;
-justify-content: space-around;
-align-items: center;
-}
-nav li {
-    list-style: none;
-    margin-right: 5px;
-}
-nav li a{
-    text-decoration: none;
-    background-color: aqua;
-    font-weight: bold;
-    padding: 5px 10px;
-}
-nav li a:hover{
-    color: red;
-    background-color: salmon;
+main {
+    flex: 1;
 }
 
-.login-body ,.register-body{
+/* .register-body{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(to right,#e2e2e2, #c9d6ff);
-    color: #333;
+    color: #333; 
+} */
+
+.login-body,.register-body {
+    background: linear-gradient(to right,#e2e2e2,#c9d6ff);
+}
+
+.login-page,.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
 }
 
 .login-container ,.register-container {
     margin: 0 15px;
+}
+
+.toast-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
 .form-box {
@@ -115,6 +115,7 @@ p a:hover {
             text-align: center;
             padding: 15px;
             margin-top: 30px;
+            
         }
 
         /* Responsive adjustments */

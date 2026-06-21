@@ -3,16 +3,40 @@ const db = require("../db");
 
 const router=express.Router();
 
-router.get("/",(req,res)=>{
-    res.render("index");
-})
+// router.get("/",(req,res)=>{
+//     res.render("index");
+// })
 
-router.get("/register",(req,res)=>{
-    res.render("register");
-})
+// router.get("/register",(req,res)=>{
+//     res.render("register");
+// })
 
-router.get('/login', (req, res) => {
-    res.render('login');
+// router.get('/login', (req, res) => {
+//     res.render('login');
+// });
+
+router.get("/", (req, res) => {
+    res.render("index", {
+        isHome: true
+    });
+});
+
+router.get("/login", (req, res) => {
+    res.render("login", {
+        isLogin: true
+    });
+});
+
+router.get("/register", (req, res) => {
+    res.render("register", {
+        isRegister: true
+    });
+});
+
+router.get("/about", (req, res) => {
+    res.render("about", {
+        isAbout: true
+    });
 });
 
 const jwt = require("jsonwebtoken");
@@ -48,4 +72,10 @@ router.get("/dashboard", (req, res) => {
 );
 });
 
+router.get("/register", (req, res) => {
+    console.log("REGISTER ROUTE HIT");
+    res.render("register", {
+        isRegister: true
+    });
+});
 module.exports = router;
