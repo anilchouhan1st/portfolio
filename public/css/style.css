@@ -17,19 +17,11 @@ main {
     flex: 1;
 }
 
-.login-body,.register-body {
-    background: linear-gradient(to right,#e2e2e2,#c9d6ff);
-}
-
 .contact-page {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 80px);
-}
-
-.login-container ,.register-container {
-    margin: 0 15px;
 }
 
 .toast-container {
@@ -108,10 +100,7 @@ p a:hover {
 }
 /* about */
 
-/* dashbord */
-.dashbord-container {
-}
-/* dashbord */
+
 
 
 footer {
@@ -133,25 +122,7 @@ footer {
   font-family: system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.8;
-  /* padding: 3rem; */
   color: #070707;
-  /* background: fixed linear-gradient(transparent, #fff 90%),
-    fixed
-      repeating-linear-gradient(
-        #efefef,
-        #efefef 1px,
-        transparent 1px,
-        transparent 40px
-      ),
-    fixed
-      repeating-linear-gradient(
-        to right,
-        #efefef,
-        #efefef 1px,
-        transparent 1px,
-        transparent 40px
-      )
-      white; */
 }
 
 .socialMedia{
