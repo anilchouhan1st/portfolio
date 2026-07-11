@@ -470,11 +470,11 @@ p a:hover {
 }
 
 .hero-section {
-    min-height: 90vh;
+    min-height: calc(100svh - 80px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 48px 20px;
+    padding: clamp(32px, 5vh, 56px) 20px;
     background:
         radial-gradient(circle at top left, rgba(80, 227, 194, 0.22), transparent 28%),
         radial-gradient(circle at bottom right, rgba(121, 40, 202, 0.24), transparent 30%),
@@ -600,6 +600,46 @@ footer {
     margin-top: 30px; 
 }
 
+.site-footer {
+    padding: 28px 20px 24px;
+    background: linear-gradient(180deg, #0d1324 0%, #090d16 100%);
+    color: #f5f7fb;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-shell {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.footer-name {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.footer-copy {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #b9c7e6;
+}
+
+.footer-top {
+    color: #7fe9d5;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.footer-top:hover,
+.footer-top:focus-visible {
+    color: #ffffff;
+}
+
 .profile-image {
     width: 200px;
     height: 200px;
@@ -711,6 +751,7 @@ footer {
     }
 
     .hero-section {
+        min-height: auto;
         padding: 32px 14px;
     }
 
@@ -780,5 +821,10 @@ footer {
     .contact-list li {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .footer-shell {
+        flex-direction: column;
+        text-align: center;
     }
 }
