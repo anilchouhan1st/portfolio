@@ -50,11 +50,19 @@
 
 :root {
   --body-bg-color: hsl(221deg 16% 6%);
+  --nav-surface: rgba(255, 255, 255, 0.94);
+  --nav-text: #0f172a;
+  --nav-link-color: #475569;
+  --nav-border-color: rgba(15, 23, 42, 0.08);
+  --nav-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --indicator-surface: rgba(15, 23, 42, 0.08);
+  --indicator-border: rgba(15, 23, 42, 0.16);
+  --indicator-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
   --bg-position: 0;
   --debug: 0;
   --trs-easing: cubic-bezier(.41, -0.09, .55, 1.09);
-  --trs-timing: 300ms;
-  --trs-delay: 80ms;
+  --trs-timing: 200ms;
+  --trs-delay: 0ms;
 }
 
 *,
@@ -84,11 +92,51 @@ main header h2 {
   font-weight: 500;
 }
 
+.nav-shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1200;
+  display: flex;
+  justify-content: center;
+  padding: 16px 16px 0;
+  margin: 0;
+}
+
 .nav {
-  transition: --after-bg-position var(--trs-timing) var(--trs-easing) 0.2s, --after-radial-bg-position var(--trs-timing) var(--trs-easing) 0.2s, --after-bg-width var(--trs-timing) var(--trs-easing) 0.2s, --after-bg-opacity var(--trs-timing) var(--trs-easing) 0.2s, --li-before-opacity var(--trs-timing) var(--trs-easing) 0.2s;
-  background: var(--body-bg-color);
+  transition: background-color var(--trs-timing) var(--trs-easing), color var(--trs-timing) var(--trs-easing), border-color var(--trs-timing) var(--trs-easing), box-shadow var(--trs-timing) var(--trs-easing), --after-bg-position var(--trs-timing) var(--trs-easing) var(--trs-delay), --after-radial-bg-position var(--trs-timing) var(--trs-easing) var(--trs-delay), --after-bg-width var(--trs-timing) var(--trs-easing) var(--trs-delay), --after-bg-opacity var(--trs-timing) var(--trs-easing) var(--trs-delay), --li-before-opacity var(--trs-timing) var(--trs-easing) var(--trs-delay);
+  border: 1px solid var(--nav-border-color);
   border-radius: 100px;
+  box-shadow: var(--nav-shadow);
   position: relative;
+  /* width: min(100%, 760px); */
+  /* width: min(calc(100% - 32px), 760px);
+   */
+    width: fit-content;
+    max-width: 100%;
+}
+
+.nav.nav-theme-dark {
+  --nav-surface: rgba(5, 10, 20, 0.92);
+  --nav-text: #f8fafc;
+  --nav-link-color: rgba(248, 250, 252, 0.9);
+  --nav-border-color: rgba(255, 255, 255, 0.16);
+  --nav-shadow: 0 12px 30px rgba(2, 6, 23, 0.28);
+  --indicator-surface: rgba(255, 255, 255, 0.18);
+  --indicator-border: rgba(255, 255, 255, 0.28);
+  --indicator-shadow: 0 12px 24px rgba(2, 6, 23, 0.24);
+}
+
+.nav.nav-theme-light {
+  --nav-surface: rgba(255, 255, 255, 0.94);
+  --nav-text: #0f172a;
+  --nav-link-color: #475569;
+  --nav-border-color: rgba(15, 23, 42, 0.08);
+  --nav-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --indicator-surface: rgba(15, 23, 42, 0.08);
+  --indicator-border: rgba(15, 23, 42, 0.16);
+  --indicator-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
 }
 
 .nav:before {
@@ -111,11 +159,21 @@ main header h2 {
   margin: 0;
   list-style: none;
   display: flex;
-  justify-content: space-between;
+   justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
   height: 80px;
   border-radius: 100px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
   background-position: center center;
-  background-image: radial-gradient(ellipse 150px 100px at calc(var(--after-radial-bg-position)*1px) bottom, white 0%, rgba(255, 255, 255, 0.2) 100%);
+  background-image: radial-gradient(ellipse 150px 100px at calc(var(--after-radial-bg-position)*1px) bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.nav ul::-webkit-scrollbar {
+  display: none;
 }
 
 .nav ul:active {
@@ -128,7 +186,7 @@ main header h2 {
   position: absolute;
   width: calc(100% - 2px);
   height: calc(100% - 2px);
-  background: var(--body-bg-color);
+  background: var(--nav-surface);
   top: 1px;
   left: 1px;
   border-radius: 100px;
@@ -141,8 +199,9 @@ main header h2 {
   z-index: 1;
   width: calc(calc(var(--after-bg-width) * 1px) - 12px);
   height: calc(100% - 12px);
-  background: linear-gradient(to bottom, rgb(255 255 255/calc(calc(var(--after-bg-opacity, 0)/10)*1%)), rgba(255, 255, 255, 0.1));
-  box-shadow: inset 0 -6px calc(var(--after-shadow-offset, 0)*1px) rgb(255 255 255/calc(var(--after-bg-opacity)*1%));
+  background: linear-gradient(135deg, var(--indicator-surface) 0%, rgba(255, 255, 255, 0.24) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), var(--indicator-shadow);
+  border: 1px solid var(--indicator-border);
   left: 6px;
   top: 6px;
   transform: translate(calc(var(--after-bg-position) * 1px), 0);
@@ -152,16 +211,17 @@ main header h2 {
 }
 
 .nav ul li {
-  padding: 1em;
+  padding: 0.8em 0.9em;
   height: 100%;
-  width: 100%;
+  min-width: max-content;
+  flex: 0 0 auto;
   position: relative;
   transform-style: preserve-3d;
   perspective: 800px;
 }
 
 .nav ul li:not(.active):hover {
-  --li-before-opacity: 0.3;
+  --li-before-opacity: 0.45;
 }
 
 .nav ul li:before {
@@ -169,7 +229,6 @@ main header h2 {
   display: block;
   position: absolute;
   z-index: 1;
-  background: rgba(255, 0, 0, 0.1);
   width: 100%;
   height: 100%;
   top: 0;
@@ -193,7 +252,7 @@ main header h2 {
 
 .nav ul li a {
   display: block;
-  color: white;
+  color: var(--nav-link-color);
   width: 100%;
   height: 100%;
   display: flex;
@@ -202,6 +261,14 @@ main header h2 {
   text-decoration: none;
   position: relative;
   z-index: 10;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color var(--trs-timing) var(--trs-easing);
+}
+
+.nav ul li.active a {
+  color: var(--nav-text);
+  font-weight: 600;
 }
 
 .nav ul:has(li.active:first-of-type a):after {
@@ -217,9 +284,52 @@ main header h2 {
 }
 
 .nav-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
 }
 
+html {
+  scroll-padding-top: 104px;
+}
+
+section[id] {
+  scroll-margin-top: 104px;
+}
+
+@media (max-width: 700px) {
+  .nav-shell {
+    padding: 8px 4px 0;
+  }
+
+  .nav {
+    width: calc(100% - 8px);
+  }
+
+  .nav ul {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    gap: 0;
+    overflow: visible;
+  }
+
+  .nav ul li {
+    flex: 1 1 20%;
+    width: 20%;
+    min-width: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .nav ul li a {
+    width: 100%;
+    padding: 0 2px;
+    font-size: clamp(0.62rem, 2.8vw, 0.78rem);
+    text-align: center;
+  }
+}
