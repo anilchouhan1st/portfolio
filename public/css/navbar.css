@@ -58,6 +58,8 @@
   --indicator-surface: rgba(15, 23, 42, 0.08);
   --indicator-border: rgba(15, 23, 42, 0.16);
   --indicator-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  --section-offset: 96px;
+  --section-content-top: 96px;
   --bg-position: 0;
   --debug: 0;
   --trs-easing: cubic-bezier(.41, -0.09, .55, 1.09);
@@ -197,14 +199,14 @@ main header h2 {
   display: block;
   position: absolute;
   z-index: 1;
-  width: calc(calc(var(--after-bg-width) * 1px) - 12px);
+  width: calc(var(--after-bg-width) * 1px);
   height: calc(100% - 12px);
   background: linear-gradient(135deg, var(--indicator-surface) 0%, rgba(255, 255, 255, 0.24) 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), var(--indicator-shadow);
   border: 1px solid var(--indicator-border);
-  left: 6px;
+  left: 0;
   top: 6px;
-  transform: translate(calc(var(--after-bg-position) * 1px), 0);
+  transform: translateX(calc(var(--after-bg-position) * 1px));
   border-radius: 100px 12px 12px 100px;
   transition: --after-bg-opacity var(--trs-timing) var(--trs-easing) var(--trs-delay), --after-shadow-offset var(--trs-timing) var(--trs-easing) var(--trs-delay), border-radius var(--trs-timing) var(--trs-easing) var(--trs-delay);
   pointer-events: none;
@@ -292,14 +294,22 @@ main header h2 {
 }
 
 html {
-  scroll-padding-top: 104px;
+  scroll-padding-top: 0;
 }
 
 section[id] {
-  scroll-margin-top: 104px;
+  scroll-margin-top: 0;
+}
+
+section[id] > :first-child {
+  padding-top: var(--section-content-top);
 }
 
 @media (max-width: 700px) {
+  :root {
+    --section-offset: 72px;
+    --section-content-top: 76px;
+  }
   .nav-shell {
     padding: 8px 4px 0;
   }

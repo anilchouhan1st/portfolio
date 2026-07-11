@@ -135,9 +135,8 @@ const updateIndicator = (targetItem) => {
     window.requestAnimationFrame(() => {
       frameRequested = false;
 
-      const navHeight = nav.getBoundingClientRect().height + 20;
-      const scrollPosition = window.scrollY + navHeight;
-      const bottomOffset = document.documentElement.scrollHeight - window.innerHeight - 8;
+      const navOffset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--section-offset')) || 96;
+      const scrollPosition = window.scrollY + navOffset;
 
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
         setActiveSection('contact', true);
@@ -163,6 +162,12 @@ const updateIndicator = (targetItem) => {
 
       if (closestId !== activeSectionId) {
         setActiveSection(closestId, true);
+      } else {
+        const activeItem = nav.querySelector('li.active');
+
+        if (activeItem) {
+          updateIndicator(activeItem);
+        }
       }
     });
   };
@@ -178,7 +183,10 @@ const updateIndicator = (targetItem) => {
       setActiveSection(sectionId, true);
 
       if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: 'smooth'
+        });
       }
     });
 
