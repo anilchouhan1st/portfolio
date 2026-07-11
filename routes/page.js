@@ -9,21 +9,15 @@ router.get("/", (req, res) => {
 });
 
 router.get("/about", (req, res) => {
-    res.render("about", {
-        isAbout: true
-    });
+    res.redirect("/#about");
 });
 
 router.get("/project", (req, res) => {
-    res.render("project", {
-        isProject: true
-    });
+    res.redirect("/#projects");
 });
 
 router.get("/contact", (req, res) => {
-    res.render("contact", {
-        isContact: true
-    });
+    res.redirect("/#contact");
 });
 
 module.exports = router;
