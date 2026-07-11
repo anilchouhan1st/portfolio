@@ -343,3 +343,18 @@ section[id] > :first-child {
     text-align: center;
   }
 }
+
+@media (max-width: 350px) {
+  .nav ul {
+    padding-inline: 10px;
+  }
+
+  .nav ul li {
+    flex: 1 1 0;
+    width: auto;
+  }
+
+  .nav ul li a {
+    padding: 0 4px;
+  }
+}

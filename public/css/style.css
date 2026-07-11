@@ -470,11 +470,13 @@ p a:hover {
 }
 
 .hero-section {
-    min-height: calc(100svh - 80px);
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(32px, 5vh, 56px) 20px;
+    padding: clamp(96px, 10vh, 128px) 20px clamp(32px, 5vh, 56px);
     background:
         radial-gradient(circle at top left, rgba(80, 227, 194, 0.22), transparent 28%),
         radial-gradient(circle at bottom right, rgba(121, 40, 202, 0.24), transparent 30%),
@@ -751,8 +753,9 @@ footer {
     }
 
     .hero-section {
-        min-height: auto;
-        padding: 32px 14px;
+        min-height: 100svh;
+        min-height: 100dvh;
+        padding: calc(72px + 24px) 14px 32px;
     }
 
     .hero-shell {
