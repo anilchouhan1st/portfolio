@@ -62,10 +62,12 @@ const updateIndicator = (targetItem) => {
   const position = targetRect.left - navListRect.left;
 
   nav.style.setProperty('--after-bg-position', position);
+
   nav.style.setProperty(
     '--after-radial-bg-position',
     position + targetRect.width / 2
   );
+
   nav.style.setProperty('--after-bg-width', targetRect.width);
 };
 
