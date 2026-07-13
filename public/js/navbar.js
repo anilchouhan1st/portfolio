@@ -44,15 +44,6 @@ function initNavbar() {
     nav.classList.toggle('nav-theme-light', !isHeroSection);
   };
 
-  // const updateIndicator = (targetItem) => {
-  //   const targetRect = targetItem.getBoundingClientRect();
-  //   const navRect = nav.getBoundingClientRect();
-
-  //   nav.style.setProperty('--after-bg-position', targetRect.left - navRect.left);
-  //   nav.style.setProperty('--after-radial-bg-position', targetRect.left - navRect.left + targetRect.width / 2);
-  //   nav.style.setProperty('--after-bg-width', targetRect.width);
-  // };
-
 const navList = nav.querySelector('ul');
 
 const updateIndicator = (targetItem) => {
@@ -94,12 +85,6 @@ const updateIndicator = (targetItem) => {
       return;
     }
 
-    // const previousRect = currentActiveItem.getBoundingClientRect();
-    // const navRect = nav.getBoundingClientRect();
-
-    // nav.style.setProperty('--after-bg-position', previousRect.left - navRect.left);
-    // nav.style.setProperty('--after-radial-bg-position', previousRect.left - navRect.left + previousRect.width / 2);
-    // nav.style.setProperty('--after-bg-width', previousRect.width);
 
     updateIndicator(currentActiveItem);
 
