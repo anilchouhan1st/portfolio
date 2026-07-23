@@ -73,3 +73,16 @@ Open:
 ```text
 http://localhost:5000
 ```
+## 📸 Screenshots
+
+### Login Page
+
+![Desktop](screenshots/desktop.png)
+
+---
+
+### Register Page
+
+![Mobile](screenshots/mobile.png)
+
+---
