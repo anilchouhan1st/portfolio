@@ -83,6 +83,6 @@ http://localhost:5000
 
 ### Mobile
 
-![Mobile](screenshots/mobile.png)
+![Mobile](screenshots/mobile.jpg)
 
 ---
