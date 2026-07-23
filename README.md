@@ -75,13 +75,13 @@ http://localhost:5000
 ```
 ## 📸 Screenshots
 
-### Login Page
+### Desktop
 
 ![Desktop](screenshots/desktop.png)
 
 ---
 
-### Register Page
+### Mobile
 
 ![Mobile](screenshots/mobile.png)
 
